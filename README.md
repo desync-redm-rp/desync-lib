@@ -32,7 +32,7 @@ A comprehensive library for RedM (Red Dead Redemption 2 multiplayer) that replic
 ## 📦 Installation
 
 1. **Download** the desync-lib resource
-2. **Place** in your `resources/[BREN]/` directory
+2. **Place** in your `resources/` directory
 3. **Add** to your `server.cfg`:
    ```cfg
    ensure desync-lib
