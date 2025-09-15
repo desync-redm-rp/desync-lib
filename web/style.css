@@ -1,0 +1,294 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Western-themed color palette */
+:root {
+    --parchment: rgba(245, 222, 179, 0.95);
+    --wood-dark: rgba(101, 67, 33, 0.9);
+    --wood-light: rgba(160, 82, 45, 0.85);
+    --leather: rgba(139, 69, 19, 0.9);
+    --gold: #daa520;
+    --text-dark: #2c1810;
+    --text-light: #f5f5dc;
+}
+
+/* Notifications */
+.notifications-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 400px;
+    pointer-events: none;
+}
+
+.notification {
+    background: var(--parchment);
+    border: 2px solid var(--wood-dark);
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-left: 6px solid var(--wood-dark);
+    animation: slideIn 0.3s ease-out;
+    pointer-events: auto;
+    position: relative;
+}
+
+.notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text fill="rgba(139,69,19,0.1)" font-size="20" y="50%">📜</text></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.notification.success {
+    border-left-color: #28a745;
+}
+
+.notification.error {
+    border-left-color: #dc3545;
+}
+
+.notification.warning {
+    border-left-color: #ffc107;
+}
+
+.notification.info {
+    border-left-color: #17a2b8;
+}
+
+.notification-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.notification-description {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Progress Bars */
+.progress-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: none;
+}
+
+.progress-bar {
+    background: var(--parchment);
+    border: 3px solid var(--wood-dark);
+    border-radius: 6px;
+    padding: 20px;
+    min-width: 300px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text fill="rgba(139,69,19,0.1)" font-size="30" y="70%">⚒️</text></svg>');
+    opacity: 0.2;
+    pointer-events: none;
+    border-radius: 3px;
+}
+
+.progress-fill {
+    height: 12px;
+    background: linear-gradient(90deg, var(--wood-dark), var(--wood-light));
+    border-radius: 6px;
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--leather);
+}
+
+.progress-text {
+    color: var(--text-dark);
+    text-align: center;
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.progress-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 8;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: #007bff;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 339.292; /* 2 * π * 54 */
+    stroke-dashoffset: 339.292;
+    transition: stroke-dashoffset 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.5));
+}
+
+.progress-circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 3D World Text */
+.world-text-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 998;
+}
+
+.world-text {
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 4px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+.world-text.large {
+    font-size: 24px;
+}
+
+.world-text.medium {
+    font-size: 18px;
+}
+
+.world-text.small {
+    font-size: 14px;
+}
+
+.world-text.red {
+    color: #ff4444;
+}
+
+.world-text.green {
+    color: #44ff44;
+}
+
+.world-text.blue {
+    color: #4444ff;
+}
+
+.world-text.yellow {
+    color: #ffff44;
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
