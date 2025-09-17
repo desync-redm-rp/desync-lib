@@ -16,16 +16,15 @@ dependencies {
     '/onesync',
 }
 
-ui_page 'web/index.html'
+ui_page 'web/dist/index.html'
 
 files {
     'init.lua',
     'resource/settings.lua',
     'imports/**/client.lua',
     'imports/**/shared.lua',
-    'web/index.html',
-    'web/style.css',
-    'web/script.js',
+    'web/dist/index.html',
+    'web/dist/bundle.js',
     'locales/*.json',
 }
 

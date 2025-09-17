@@ -16,7 +16,7 @@ function lib.setNuiFocus(hasFocus, allowInput, disableCursor)
     print("🎯 [DEBUG] Current keepInput:", keepInput)
 
     -- Only set NUI focus if web UI is available
-    local webUIFile = LoadResourceFile(lib.name, 'web/build/index.html')
+    local webUIFile = LoadResourceFile(lib.name, 'web/dist/index.html')
     print("🎯 [DEBUG] Web UI file loaded:", webUIFile and "YES" or "NO", "Length:", webUIFile and #webUIFile or 0)
 
     if webUIFile and webUIFile ~= "" then

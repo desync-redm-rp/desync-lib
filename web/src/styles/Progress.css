@@ -1,0 +1,179 @@
+/* Root layer */
+.ds-progress-root {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #2c1e12;
+  }
+  
+  /* Container */
+  .ds-progress-container {
+    position: absolute;
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background:
+      radial-gradient(120% 80% at 50% 20%, rgba(255,255,255,0.85), rgba(245,237,224,0.92) 60%, rgba(240,230,210,0.9)) ,
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"/>');
+    border: 2px solid #5b3b20;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45), inset 0 0 0 2px rgba(255,255,255,0.3);
+    outline: 4px double rgba(59, 40, 22, 0.8);
+  }
+
+    /* Positioning for container by position */
+    .ds-progress-root.pos-top .ds-progress-container {
+      top: 8%;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    .ds-progress-root.pos-middle .ds-progress-container {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .ds-progress-root.pos-bottom .ds-progress-container {
+      bottom: 8%;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    .ds-progress-root.pos-top-left .ds-progress-container {
+      top: 6%;
+      left: 6%;
+      transform: none;
+    }
+    .ds-progress-root.pos-top-right .ds-progress-container {
+      top: 6%;
+      right: 6%;
+      left: auto;
+      transform: none;
+    }
+    .ds-progress-root.pos-bottom-left .ds-progress-container {
+      bottom: 6%;
+      left: 6%;
+      transform: none;
+    }
+    .ds-progress-root.pos-bottom-right .ds-progress-container {
+      bottom: 6%;
+      right: 6%;
+      left: auto;
+      transform: none;
+    }
+  
+  /* Scrim */
+  .ds-progress-scrim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(60% 60% at 50% 50%, rgba(0,0,0,0.24), rgba(0,0,0,0.55));
+  }
+  
+  /* Bar */
+  .ds-progress-bar {
+    min-width: 360px;
+    max-width: 520px;
+  }
+  
+  .ds-bar-label {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #3b2816;
+  }
+  
+  .ds-bar-track {
+    position: relative;
+    height: 22px;
+    background: repeating-linear-gradient(
+        90deg,
+        #c6a57c 0 6px,
+        #bc9a70 6px 12px
+      );
+    border: 2px solid #5b3b20;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.4);
+  }
+  
+  .ds-bar-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background:
+      linear-gradient(180deg, #7a4f2a, #5e3f22),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.25) 0 8px,
+        rgba(255,255,255,0.05) 8px 16px
+      );
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+    transition: width 80ms linear;
+  }
+  
+  .ds-bar-frame {
+    pointer-events: none;
+    position: relative;
+    margin-top: 8px;
+    height: 8px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(91,59,32,0.9) 0 4px,
+        rgba(91,59,32,0.6) 4px 8px
+      );
+    border: 2px solid #5b3b20;
+    border-radius: 4px;
+    filter: sepia(0.35);
+  }
+  
+  /* Circle */
+  .ds-progress-circle-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 8px;
+  }
+  
+  .ds-progress-circle {
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+  }
+  
+  .ds-circle-track {
+    stroke: #e6d3b6;
+    opacity: 0.9;
+  }
+  
+  .ds-circle-fill {
+    stroke: #7a4f2a;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 80ms linear;
+  }
+  
+  .ds-circle-label {
+    position: absolute;
+    top: calc(50% + 48px);
+    transform: translateY(-50%);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #3b2816;
+    text-align: center;
+    padding: 2px 6px;
+    background: rgba(239, 223, 199, 0.8);
+    border: 1px solid #5b3b20;
+    border-radius: 4px;
+  }
+  
+  .ds-circle-percent {
+    position: absolute;
+    font-weight: 800;
+    font-size: 20px;
+    color: #2c1e12;
+    text-shadow: 0 1px 0 #fff;
+  }

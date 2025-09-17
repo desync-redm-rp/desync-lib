@@ -25,6 +25,7 @@ function lib.progressBar(data)
     data.label = data.label or 'Loading...'
     data.duration = data.duration or 5000
     data.canCancel = data.canCancel or false
+    data.position = data.position or 'middle'
 
     -- Send to NUI
     SendNUIMessage(data)
